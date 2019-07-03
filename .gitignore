@@ -3,3 +3,5 @@
 *.exe
 terraform.tfstate
 terraform.tfstate.backup
+outfile.txt
+*.lock*

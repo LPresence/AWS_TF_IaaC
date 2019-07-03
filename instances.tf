@@ -4,18 +4,18 @@ resource "aws_instance" "CDS-tools-frontend" {
   security_groups	= ["${aws_security_group.allow_front.id}"]
   subnet_id	=	aws_subnet.primaire.id
   key_name	=	"diwocs"
-  provisioner "file" {
-    source	=	"test.sh"
-    destination	=	"/test.sh"
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /test.sh",
-      "/bin/bash /test.sh",
-    ]
-  }
+//  provisioner "file" {
+//    source	=	"test.sh"
+//    destination	=	"/test.sh"
+//  }
+//  provisioner "remote-exec" {
+//    inline = [
+//      "chmod +x /test.sh",
+//      "/bin/bash /test.sh",
+//    ]
+//  }
   tags = {
-    Name	=	"CDS-zinternet"
+    Name	=	"CDS-Zinternet"
     projet = "CDS-tools"
   }
 }
