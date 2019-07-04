@@ -1,5 +1,5 @@
 resource "aws_launch_configuration" "ecs-launch-config-gitlab" {
-  name                        = "ecs-launch-configuration"
+  #name                        = "ecs-launch-configuration"
   image_id                    = "ami-071f4e4006f9c3211"
   instance_type               = "t2.small"
   #iam_instance_profile        = "${aws_iam_instance_profile.ecs-instance-profile.id}"
@@ -20,8 +20,10 @@ resource "aws_launch_configuration" "ecs-launch-config-gitlab" {
   user_data                   = <<EOF
                                   #!/bin/bash
                                   echo ECS_CLUSTER=fr-nantes-im >> /etc/ecs/ecs.config
+                                  mkdir /efs
+                                  echo salam >> /efs/test.txt
                                   EOF
-}
+} #Adapter install enfs tools et mount une fois internet récuperé
 
 resource "aws_autoscaling_group" "ecs-autoscaling-group-main-cluster" {
   name                        = "ecs-autoscaling-group"

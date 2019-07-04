@@ -18,6 +18,8 @@ provider "aws" {
   region     = var.aws_region
 }
 
+
+# Affichage variables fin d'execution
 output "EFS-mount-target-dns" {
   description = "DNS name of the mount target provisioned."
   value       = "${aws_efs_mount_target.efs-mt-ecs.dns_name}"
@@ -28,7 +30,7 @@ output "EIP-access-address" {
   value       = "${aws_eip.CDS-tools-EIP.public_ip}"
 }
 
-output "ECS-ip" {
+output "ECS-frontend-ip" {
   description = "IP address of the ECS instance."
   value       = "${aws_instance.CDS-tools-frontend.private_ip}"
 }
