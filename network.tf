@@ -38,6 +38,7 @@ resource "aws_eip" "CDS-tools-EIP" {
   vpc      = true
 }
 
+
 resource "aws_internet_gateway" "CDS-tools-gateway" {
   vpc_id = "${aws_vpc.CDS-tools-vpc.id}"
 

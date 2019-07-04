@@ -43,13 +43,13 @@ resource "aws_security_group" "allow_to_cluster" {
   description = "Allow HTTP/S/SSH inbound traffic"
   vpc_id		=	"${aws_vpc.CDS-tools-vpc.id}"
 
-  #ingress {
-  #	#SSH
-  #   from_port = 22
-  #    to_port = 22
-  #    protocol = "tcp"
-  #    cidr_blocks = ["0.0.0.0/0"]
-  # }
+  ingress {
+  	#SSH
+     from_port = 22
+      to_port = 22
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+   }
 
   ingress {
     #HTTP

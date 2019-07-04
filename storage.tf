@@ -12,3 +12,4 @@ resource "aws_efs_mount_target" "efs-mt-ecs" {
   subnet_id = "${aws_subnet.primaire.id}"
   security_groups = ["${aws_security_group.allow_efs.id}"]
 }
+
