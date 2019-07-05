@@ -80,8 +80,7 @@ resource "aws_eip" "CDS-nat-ip" {
 
 resource "aws_nat_gateway" "CDS-nat-gw" {
   allocation_id = "${aws_eip.CDS-nat-ip.id}"
-  subnet_id     = "${aws_subnet.secondaire.id}"
-
+  subnet_id     = "${aws_subnet.primaire.id}"
   tags = {
     Name = "CDS-ngw"
     projet = "CDS-tools"
@@ -95,7 +94,6 @@ resource "aws_route_table" "CDS-priv-rt" {
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_nat_gateway.CDS-nat-gw.id}"
   }
-
   tags = {
     Name = "CDS-pub-rt"
   }
