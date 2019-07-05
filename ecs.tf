@@ -15,22 +15,24 @@ resource "aws_launch_configuration" "ecs-launch-config-gitlab" {
   }
 
   security_groups             = ["${aws_security_group.allow_to_cluster.id}"]
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   key_name                    = "diwocs"
   user_data                   = <<EOF
                                   #!/bin/bash
                                   echo ECS_CLUSTER=fr-nantes-im >> /etc/ecs/ecs.config
                                   mkdir /efs
-                                  echo salam >> /efs/test.txt
+                                  echo tested >> /efs/test.txt
                                   EOF
 } #Adapter install enfs tools et mount une fois internet récuperé
+#yum update -y
+#yum install -y nfs-utils
 
 resource "aws_autoscaling_group" "ecs-autoscaling-group-main-cluster" {
   name = "ecs-autoscaling-group"
   max_size = "1"
   min_size = "1"
   desired_capacity = "1"
-  vpc_zone_identifier = ["${aws_subnet.primaire.id}"] #, "${aws_subnet.secondaire.id}"]
+  vpc_zone_identifier = ["${aws_subnet.secondaire.id}"] #, "${aws_subnet.secondaire.id}"]
   launch_configuration = "${aws_launch_configuration.ecs-launch-config-gitlab.name}"
   #health_check_type           = "ELB"
 }

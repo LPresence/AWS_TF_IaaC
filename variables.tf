@@ -8,6 +8,14 @@ variable "base_cidr_block" {
   default     = "10.1.0.0/16"
 }
 
+variable "subnet_public" {
+  default = "10.1.1.0/24"
+}
+
+variable "subnet_private" {
+  default = "10.1.2.0/24"
+}
+
 # Declare the data source
 data "aws_availability_zones" "available" {
   state = "available"
@@ -28,6 +36,11 @@ output "EFS-mount-target-dns" {
 output "EIP-access-address" {
   description = "IP address of the Elastic IP."
   value       = "${aws_eip.CDS-tools-EIP.public_ip}"
+}
+
+output "EIP-nat-address" {
+  description = "IP address of the Elastic IP."
+  value       = "${aws_eip.CDS-nat-ip.public_ip}"
 }
 
 output "ECS-frontend-ip" {

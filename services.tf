@@ -4,4 +4,7 @@ resource "aws_ecs_service" "gitlab-ecs-service" {
   cluster         = "${aws_ecs_cluster.cluster-main.id}"
   task_definition = "${aws_ecs_task_definition.gitlab-ce.family}:${max("${aws_ecs_task_definition.gitlab-ce.revision}", "${data.aws_ecs_task_definition.gitlab-ce.revision}")}"
   desired_count   = 1
+//  network_configuration {
+//    subnets = ["${aws_subnet.secondaire.id}"]
+//  }
 }
