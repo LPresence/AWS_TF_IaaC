@@ -99,27 +99,3 @@ resource "aws_security_group" "allow_efs" {
     protocol        = "-1"
   }
 }
-
-resource "aws_security_group" "allow_nat_internet" {
-  name        = "allow_nat"
-  description = "Allow NAT inbound traffic"
-  vpc_id      = "${aws_vpc.CDS-tools-vpc.id}"
-
-  ingress {
-    # HTTPS
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
-    # Opening to 0.0.0.0/0 can lead to security vulnerabilities.
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  tags = {
-    projet = "CDS-tools"
-  }
-}

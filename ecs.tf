@@ -21,11 +21,10 @@ resource "aws_launch_configuration" "ecs-launch-config-gitlab" {
                                   #!/bin/bash
                                   echo ECS_CLUSTER=fr-nantes-im >> /etc/ecs/ecs.config
                                   mkdir /efs
-                                  echo tested >> /efs/test.txt
+                                  yum update -y
+                                  yum install -y nfs-utils
                                   EOF
-} #Adapter install enfs tools et mount une fois internet récuperé
-#yum update -y
-#yum install -y nfs-utils
+} #Verifier fonctionnement update
 
 resource "aws_autoscaling_group" "ecs-autoscaling-group-main-cluster" {
   name = "ecs-autoscaling-group"

@@ -104,8 +104,3 @@ resource "aws_route_table_association" "priv-subnet-association" {
   route_table_id = "${aws_route_table.CDS-priv-rt.id}"
 }
 
-//resource "aws_network_interface" "test" {
-//  subnet_id       = "${aws_subnet.secondaire.id}"
-//  description = "Interface for NAT Gateway"
-//  security_groups = ["${aws_security_group.allow_nat_internet.id}"]
-//}
