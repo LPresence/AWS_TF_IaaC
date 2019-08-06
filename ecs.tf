@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "ecs-launch-config-gitlab" {
   #name                        = "ecs-launch-configuration"
-  image_id      = "ami-071f4e4006f9c3211"
+  image_id      = "ami-0d260f3e5ccd06043"
   instance_type = "t2.small"
   #iam_instance_profile        = "${aws_iam_instance_profile.ecs-instance-profile.id}"
 
