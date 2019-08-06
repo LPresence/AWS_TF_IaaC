@@ -3,6 +3,7 @@ resource "aws_launch_configuration" "ecs-launch-config-gitlab" {
   image_id      = "ami-0d260f3e5ccd06043"
   instance_type = "t2.small"
   #iam_instance_profile        = "${aws_iam_instance_profile.ecs-instance-profile.id}"
+  #je pense qu'il faut mettre un profil : AmazonEC2ContainerServiceforEC2Role
 
   root_block_device {
     volume_type           = "standard"
